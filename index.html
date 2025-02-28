@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #87CEFA; /* Blue background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card-container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 600px;
+            height: 600px;
+            background-color: transparent;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 0.6s ease;
+            cursor: pointer;
+        }
+
+        .card.open {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .card-front {
+            background-color:white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-back {
+            background-color: white;
+            transform: rotateY(180deg);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card h1 {
+            color: black;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .card p {
+            color: black;
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+        .card .name {
+            color: grey;
+            font-weight: bold;
+        }
+
+        .photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin: 15px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+
+        .gif {
+            width: 100px;
+            margin: 15px auto;
+        }
+
+        .balloons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .balloon {
+            width: 50px;
+            height: 70px;
+            background-color: #ff6f61;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            margin: 0 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background-color: black;
+        }
+
+        .balloon.blue {
+            background-color: black;
+        }
+
+        .balloon.green {
+            background-color: black;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <div class="card" onclick="openCard()">
+        <!-- Front of the card -->
+        <div class="card-front">
+            <h1>Happy Birthday Joel!</h1>
+            <img src="DSC_0226.JPG" alt="Friend's Photo" class="photo">
+            <p>Wishing you all the happiness in the world, <span class="name">JOEL</span>!</p>
+        </div>
+
+        <!-- Back of the card -->
+<div class="card-back">
+    <h1>Surprise!</h1>
+    <p>Here's to another year of amazing memories, laughter, and love.</p>
+    <p>Enjoy your special day, <span class="name">JOEL</span>!</p>
+    <p>With love, from your brother.</p>
+    <p>Once again wish you a very happy birthday thambi!</p>
+    
+    <!-- Your Photo -->
+    <img src="Img.jpg" alt="Your Photo" class="photo">
+</div>
+
+    </div>
+</div>
+
+<script>
+    function openCard() {
+        const card = document.querySelector('.card');
+        card.classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>
